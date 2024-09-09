@@ -1,49 +1,26 @@
 const Deposit = require("../models/Deposit");
 const logger = require("../utils/logger");
 
-const beaconContractAddress = process.env.BEACON_CONTRACT;
+const processDeposit = async (transaction) => {
+  try {
+    // Extract relevant data from the transaction
+    const depositData = {
+      blockNumber: transaction.blockNumber,
+      blockTimestamp: transaction.timestamp,
+      fee: transaction.gas * transaction.gasPrice, // Calculate fee
+      hash: transaction.hash,
+      pubkey: transaction.from,
+    };
 
-// Function to monitor Ethereum deposits using Alchemy
-const monitorDeposits = (alchemy) => {
-  console.log("Listening for ETH deposits...");
+    // Save the deposit to MongoDB
+    const newDeposit = new Deposit(depositData);
+    await newDeposit.save();
 
-  // Subscribe to new blocks on the Ethereum network
-  alchemy.ws.on("block", async (blockNumber) => {
-    console.log(`New block received: ${blockNumber}`);
-
-    try {
-      // Get all the transactions in the block
-      const block = await alchemy.core.getBlockWithTransactions(blockNumber);
-
-      block.transactions.forEach(async (tx) => {
-        // Check if the transaction is directed to the Beacon Deposit Contract
-        if (
-          tx.to &&
-          tx.to.toLowerCase() === beaconContractAddress.toLowerCase()
-        ) {
-          console.log("Deposit transaction detected:", tx);
-
-          const fee = tx.gasLimit.mul(tx.gasPrice);
-
-          const depositData = {
-            blockNumber: tx.blockNumber,
-            blockTimestamp: block.timestamp,
-            fee: fee.toString(),
-            hash: tx.hash,
-            pubkey: tx.from,
-          };
-
-          // Save to MongoDB
-          const newDeposit = new Deposit(depositData);
-          await newDeposit.save();
-          console.log("Deposit saved:", newDeposit);
-        }
-      });
-    } catch (err) {
-      logger.error("Error tracking deposit:", err);
-    }
-  });
+    logger.info("Deposit saved:", newDeposit);
+  } catch (err) {
+    logger.error("Error processing deposit:", err);
+    throw err; // Propagate error
+  }
 };
 
-module.exports = { monitorDeposits };
-
+module.exports = { processDeposit };
