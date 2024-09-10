@@ -27,27 +27,44 @@ const sendTelegramNotification = async (message) => {
 
 const processDeposit = async (transaction) => {
   try {
-    // Extract relevant data from the transaction
+    // Check if the deposit has already been processed
+    const existingDeposit = await Deposit.findOne({ hash: transaction.hash });
+    if (existingDeposit) {
+      logger.info(
+        `Deposit already processed for transaction: ${transaction.hash}`
+      );
+      return; // Skip processing if deposit is already in the database
+    }
+
+    // Calculate fee (if available) or set default value
+    const fee =
+      transaction.gasUsed && transaction.gasPrice
+        ? (transaction.gasUsed * transaction.gasPrice) / 10 ** 18 // Convert to ETH from wei
+        : "0"; // Fallback if no fee is provided
+
     const depositData = {
-      blockNumber: transaction.blockNumber,
-      blockTimestamp: transaction.timestamp,
-      fee: transaction.gas * transaction.gasPrice, // Calculate fee
+      blockNumber: parseInt(transaction.blockNum, 16), // Convert hex block number to decimal
+      blockTimestamp: transaction.timestamp || Date.now(), // Use current time if timestamp not available
+      fee, // Correctly set fee
       hash: transaction.hash,
-      pubkey: transaction.from,
+      pubkey: transaction.fromAddress, // Use fromAddress as the public key
     };
 
-    // Save the deposit to MongoDB
-    const newDeposit = new Deposit(depositData);
-    await newDeposit.save();
+    // Upsert (update if exists, insert if not)
+    const newDeposit = await Deposit.findOneAndUpdate(
+      { hash: transaction.hash }, // Find by hash
+      depositData, // Data to update or insert
+      { upsert: true, new: true, setDefaultsOnInsert: true } // Upsert option
+    );
+
     // Send Telegram notification
-    const message = `New ETH Deposit:\nHash: ${tx.hash}\nFrom: ${tx.from}\nAmount: ${tx.value}`;
+    const message = `New ETH Deposit:\nHash: ${transaction.hash}\nFrom: ${transaction.fromAddress}\nAmount: ${transaction.value}`;
     sendTelegramNotification(message);
 
-    logger.info("Deposit saved:", newDeposit);
+    logger.info("Deposit processed:", newDeposit);
   } catch (err) {
     logger.error("Error processing deposit:", err);
-    throw err; // Propagate error
+    throw err;
   }
 };
-
 module.exports = { processDeposit };

@@ -6,23 +6,11 @@ services:
     ports:
       - "5000:5000" # Map container port 5000 to host port 5000
     environment:
-      - MONGODB_URI=mongodb://mongo:27017/eth-deposits # MongoDB connection string pointing to Mongo container
+      - MONGODB_URI=${MONGODB_URI} # MongoDB Atlas connection string from .env
       - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
       - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
       - ALCHEMY_API_KEY=${ALCHEMY_API_KEY}
       - ALCHEMY_SIGNING_KEY=${ALCHEMY_SIGNING_KEY}
       - BEACON_CONTRACT=${BEACON_CONTRACT}
-    depends_on:
-      - mongo
     volumes:
       - .:/app # Mounts current directory in the container for live development (Optional for production)
-
-  mongo:
-    image: mongo:4.4-bionic # Use a specific MongoDB version image
-    ports:
-      - "27017:27017" # Map container port 27017 to host port 27017
-    volumes:
-      - mongo-data:/data/db # Persistent storage for MongoDB
-
-volumes:
-  mongo-data: # Declare named volume for MongoDB persistent data

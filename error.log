@@ -1,1 +1,65 @@
 2024-09-09T17:55:51.342Z [[31merror[39m]: Error tracking deposit: missing response (requestBody="{\"method\":\"eth_getBlockByNumber\",\"params\":[\"0x13c14b8\",true],\"id\":59,\"jsonrpc\":\"2.0\"}", requestMethod="POST", serverError={"code":"ECONNRESET"}, url="https://eth-mainnet.g.alchemy.com/v2/kXp6xa1hhoyIrDFzjeEOeS3zTZw4UP2T", code=SERVER_ERROR, version=web/5.7.1)
+2024-09-10T06:44:30.374Z [[31merror[39m]: Error processing deposit: Deposit validation failed: blockNumber: Path `blockNumber` is required., blockTimestamp: Path `blockTimestamp` is required., pubkey: Path `pubkey` is required.
+2024-09-10T06:44:30.375Z [[31merror[39m]: Error processing webhook: Deposit validation failed: blockNumber: Path `blockNumber` is required., blockTimestamp: Path `blockTimestamp` is required., pubkey: Path `pubkey` is required.
+2024-09-10T06:44:31.933Z [[31merror[39m]: Error processing deposit: Deposit validation failed: blockNumber: Path `blockNumber` is required., blockTimestamp: Path `blockTimestamp` is required., pubkey: Path `pubkey` is required.
+2024-09-10T06:44:31.933Z [[31merror[39m]: Error processing webhook: Deposit validation failed: blockNumber: Path `blockNumber` is required., blockTimestamp: Path `blockTimestamp` is required., pubkey: Path `pubkey` is required.
+2024-09-10T06:44:34.441Z [[31merror[39m]: Error processing deposit: Deposit validation failed: blockNumber: Path `blockNumber` is required., blockTimestamp: Path `blockTimestamp` is required., pubkey: Path `pubkey` is required.
+2024-09-10T06:44:34.442Z [[31merror[39m]: Error processing webhook: Deposit validation failed: blockNumber: Path `blockNumber` is required., blockTimestamp: Path `blockTimestamp` is required., pubkey: Path `pubkey` is required.
+2024-09-10T06:48:17.549Z [[31merror[39m]: Error processing deposit: E11000 duplicate key error collection: eth-deposits.deposits index: hash_1 dup key: { hash: "0x7a4a39da2a3fa1fc2ef88fd1eaea070286ed2aba21e0419dcfb6d5c5d9f02a72" }
+2024-09-10T06:48:17.550Z [[31merror[39m]: Error processing webhook: E11000 duplicate key error collection: eth-deposits.deposits index: hash_1 dup key: { hash: "0x7a4a39da2a3fa1fc2ef88fd1eaea070286ed2aba21e0419dcfb6d5c5d9f02a72" }
+2024-09-10T06:48:19.080Z [[31merror[39m]: Error processing deposit: E11000 duplicate key error collection: eth-deposits.deposits index: hash_1 dup key: { hash: "0x7a4a39da2a3fa1fc2ef88fd1eaea070286ed2aba21e0419dcfb6d5c5d9f02a72" }
+2024-09-10T06:48:19.081Z [[31merror[39m]: Error processing webhook: E11000 duplicate key error collection: eth-deposits.deposits index: hash_1 dup key: { hash: "0x7a4a39da2a3fa1fc2ef88fd1eaea070286ed2aba21e0419dcfb6d5c5d9f02a72" }
+2024-09-10T06:48:21.579Z [[31merror[39m]: Error processing deposit: E11000 duplicate key error collection: eth-deposits.deposits index: hash_1 dup key: { hash: "0x7a4a39da2a3fa1fc2ef88fd1eaea070286ed2aba21e0419dcfb6d5c5d9f02a72" }
+2024-09-10T06:48:21.580Z [[31merror[39m]: Error processing webhook: E11000 duplicate key error collection: eth-deposits.deposits index: hash_1 dup key: { hash: "0x7a4a39da2a3fa1fc2ef88fd1eaea070286ed2aba21e0419dcfb6d5c5d9f02a72" }
+2024-09-10T06:48:27.099Z [[31merror[39m]: Error processing deposit: E11000 duplicate key error collection: eth-deposits.deposits index: hash_1 dup key: { hash: "0x7a4a39da2a3fa1fc2ef88fd1eaea070286ed2aba21e0419dcfb6d5c5d9f02a72" }
+2024-09-10T06:48:27.099Z [[31merror[39m]: Error processing webhook: E11000 duplicate key error collection: eth-deposits.deposits index: hash_1 dup key: { hash: "0x7a4a39da2a3fa1fc2ef88fd1eaea070286ed2aba21e0419dcfb6d5c5d9f02a72" }
+2024-09-10T06:48:28.748Z [[31merror[39m]: Error processing deposit: E11000 duplicate key error collection: eth-deposits.deposits index: hash_1 dup key: { hash: "0x7a4a39da2a3fa1fc2ef88fd1eaea070286ed2aba21e0419dcfb6d5c5d9f02a72" }
+2024-09-10T06:48:28.748Z [[31merror[39m]: Error processing webhook: E11000 duplicate key error collection: eth-deposits.deposits index: hash_1 dup key: { hash: "0x7a4a39da2a3fa1fc2ef88fd1eaea070286ed2aba21e0419dcfb6d5c5d9f02a72" }
+2024-09-10T06:48:31.471Z [[31merror[39m]: Error processing deposit: E11000 duplicate key error collection: eth-deposits.deposits index: hash_1 dup key: { hash: "0x7a4a39da2a3fa1fc2ef88fd1eaea070286ed2aba21e0419dcfb6d5c5d9f02a72" }
+2024-09-10T06:48:31.472Z [[31merror[39m]: Error processing webhook: E11000 duplicate key error collection: eth-deposits.deposits index: hash_1 dup key: { hash: "0x7a4a39da2a3fa1fc2ef88fd1eaea070286ed2aba21e0419dcfb6d5c5d9f02a72" }
+2024-09-10T07:33:13.983Z [[31merror[39m]: MongoDB Connection Error: querySrv ESERVFAIL _mongodb._tcp.eth-deposit-tracker.e6i12.mongodb.net
+2024-09-10T07:35:26.927Z [[31merror[39m]: MongoDB Connection Error: querySrv ESERVFAIL _mongodb._tcp.eth-deposit-tracker.e6i12.mongodb.net
+2024-09-10T09:03:15.571Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:03:15.574Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:03:15.603Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:03:15.605Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:03:17.245Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:03:17.247Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:03:17.266Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:03:17.267Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:03:31.320Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:03:31.321Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:03:32.395Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:03:32.396Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:03:32.408Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:03:32.410Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:03:35.407Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:03:35.407Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:03:55.276Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:03:55.277Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:03:55.281Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:03:55.282Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:04:14.004Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:04:14.005Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:04:15.516Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:04:15.517Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:04:15.870Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:04:15.871Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:04:17.497Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:04:17.503Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:04:18.116Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:04:18.117Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:04:20.242Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:04:20.243Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:12:13.975Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:12:13.977Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:12:15.489Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:12:15.490Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:12:15.802Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:12:15.802Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:12:17.321Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:12:17.321Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:12:18.071Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:12:18.072Z [[31merror[39m]: Error processing webhook: fee is not defined
+2024-09-10T09:12:19.848Z [[31merror[39m]: Error processing deposit: fee is not defined
+2024-09-10T09:12:19.849Z [[31merror[39m]: Error processing webhook: fee is not defined
