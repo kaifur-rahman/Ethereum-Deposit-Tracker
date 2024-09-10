@@ -34,9 +34,9 @@ app.post("/api/webhook", async (req, res) => {
     console.log(req.body.event.activity);
 
     // Verify signature to ensure the request is from Alchemy
-    // if (!verifySignature(req)) {
-    //   return res.status(401).send("Unauthorized: Invalid signature");
-    // }
+    if (!verifySignature(req)) {
+      return res.status(401).send("Unauthorized: Invalid signature");
+    }
 
     // Extract the activity (list of transactions)
     const activity = req.body.event.activity;
@@ -44,33 +44,33 @@ app.post("/api/webhook", async (req, res) => {
     //----------------------------deomonstration purpose--------------------
 
     //Temporarily process all transactions for demonstration
-    for (const tx of activity) {
-      logger.info(`Transaction received: ${tx.hash}`);
+    // for (const tx of activity) {
+    //   logger.info(`Transaction received: ${tx.hash}`);
 
-      // Send the transaction to depositService for processing
-      await depositService.processDeposit(tx);
-    }
+    //   // Send the transaction to depositService for processing
+    //   await depositService.processDeposit(tx);
+    // }
 
     //-----------------------------------------------------------------
 
     // Iterate through the activity array to find ETH transactions to the Beacon Deposit Contract
     //------------------------actual task-------------------------------------
-    // for (const tx of activity) {
-    //   const toAddress = tx.toAddress;
-    //   const beaconContractAddress = process.env.BEACON_CONTRACT;
-    //   const assetType = tx.asset; // Check if the asset type is ETH or native
+    for (const tx of activity) {
+      const toAddress = tx.toAddress;
+      const beaconContractAddress = process.env.BEACON_CONTRACT;
+      const assetType = tx.asset; // Check if the asset type is ETH or native
 
-    //   // //   // Only process ETH transactions to the Beacon Deposit Contract
-    //   if (
-    //     toAddress.toLowerCase() === beaconContractAddress.toLowerCase() &&
-    //     (assetType === "ETH" || assetType === "native")
-    //   ) {
-    //     logger.info(`Beacon contract ETH transaction received: ${tx.hash}`);
+      // //   // Only process ETH transactions to the Beacon Deposit Contract
+      if (
+        toAddress.toLowerCase() === beaconContractAddress.toLowerCase() &&
+        (assetType === "ETH" || assetType === "native")
+      ) {
+        logger.info(`Beacon contract ETH transaction received: ${tx.hash}`);
 
-    //     //     // Send the relevant transaction to depositService for processing
-    //     await depositService.processDeposit(tx);
-    //   }
-    // }
+        //     // Send the relevant transaction to depositService for processing
+        await depositService.processDeposit(tx);
+      }
+    }
     //----------------------------------------------------------------------
     // Respond to Alchemy with success status
     res.status(200).send("Webhook received and verified");
